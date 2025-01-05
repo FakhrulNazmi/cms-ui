@@ -15,6 +15,7 @@ import Dashboard from './components/Dashboard';
 import Login from './components/Login';
 import Register from './components/Register';
 import Navbar from './components/Navbar';
+import Certificate from './components/Certificate';
 
 // toast.configure()
 
@@ -74,8 +75,16 @@ function App() {
               }  
             />
             <Route 
-            path='/register' 
-            element={<Register />} 
+              path='/certificate' 
+              element={
+                isAuthenticated 
+                  ? <Certificate /> 
+                  : <Navigate to="/login" />
+              }  
+            />
+            <Route 
+              path='/register' 
+              element={<Register />} 
             />
             <Route 
               path='/dashboard' 
@@ -96,12 +105,4 @@ function App() {
     
   );
 }
-
-// export default function App() {
-//   return (
-//     <div className='App'>
-//       <Navbar/>
-//     </div>
-//   )
-// }
 export default App;
